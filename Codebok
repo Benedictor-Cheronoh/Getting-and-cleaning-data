@@ -1,1 +1,67 @@
+##data sources;
+http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
+and
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip
 
+##Data description:data to indicate all the variables and summaries calculated, along with units
+- 'train/y_train.txt': Training labels.
+
+- 'test/X_test.txt': Test set.
+
+- 'test/y_test.txt': Test labels.
+
+-'README.txt': describes about the general information and background related to the data sets within the zip file.
+
+- 'features_info.txt': Shows information about the variables used on the feature vector.
+
+- 'features.txt': List of all features.
+
+ - 'activity_labels.txt': Links the class labels with their activity name.
+
+- 'train/X_train.txt': Training set.
+
+ - 'train/subject_train.txt':   Each row identifies the subject who performed the activity for each window sample.
+
+  	 - 'test/subject_test.txt':  Each row identifies the subject who performed the activity for each window sample.
+  	    
+   ##data sets not used in the current project. 
+
+   	 - 'train/Inertial Signals/total_acc_x_train.txt'; 'train/Inertial Signals/body_acc_x_train.txt';
+   	   'train/Inertial Signals/body_gyro_x_train.txt'. More information related to these three data sets can be
+   	    found in 'README.txt', 'feature_info.txt' and 'feature.txt' and the original website.
+##### Unit:
+
+Features are normalized and bounded within [-1,1]. Therefore they are unitless.
+
+##Clean Data
+Tidy data set: new variable names
+-- lower cases; removed bad characters "()"; replaced "-" to "."
+
+##How to begin
+# Get Data and Unzip to project directory
+
+# File URL to download
+fileURL <- 'https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip'
+##Local directory path and unzipping files
+zip_file_path <-"Downloads"
+temp_dir <- tempdir()
+unzip("Downloads", exdir = temp_dir)
+
+# Read training and testing datasets
+training = read.csv("UCI HAR Dataset/train/X_train.txt", sep="", header=FALSE)
+training[,562] = read.csv("UCI HAR Dataset/train/y_train.txt", sep="", header=FALSE)
+training[,563] = read.csv("UCI HAR Dataset/train/subject_train.txt", sep="", header=FALSE)
+
+
+
+##How to: steps in run_analysis.R to process the raw data sets and create clean data set
+### install special package "reshape2"
+###Merges the training and the test data sets to create one data set 
+###Get the measurements on the mean and standard deviation for each measurement.
+###Name the activities in the data set
+###Label the data set with descriptive activity names
+###Creates the clean/tidy data set with the average of each variable for each activity and each subject.
+
+
+#Then
+ #R code: run_analysis.R
